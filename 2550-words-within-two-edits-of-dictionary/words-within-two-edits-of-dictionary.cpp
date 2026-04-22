@@ -16,6 +16,7 @@ public:
             for (int i=0; i<query.length(); ++i) {
                 if (query[i] != dictWord[i]) {
                     ++numDiff;
+                    if (numDiff > 2) break;
                 }
             }
             if (numDiff <= 2) return true;
