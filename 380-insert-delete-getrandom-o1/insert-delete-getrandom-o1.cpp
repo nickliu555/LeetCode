@@ -16,9 +16,9 @@ public:
     
     bool remove(int val) {
         if (valToIndex.count(val) == 0) return false;
-        int lastVal = valArr.back();
-        valToIndex[lastVal] = valToIndex[val];
-        valArr[valToIndex[val]] = lastVal;
+        int index = valToIndex[val], lastVal = valArr.back();
+        valToIndex[lastVal] = index;
+        valArr[index] = lastVal;
         valArr.pop_back();
         valToIndex.erase(val);
         return true;
