@@ -1,10 +1,6 @@
 class Solution {
 public:
     bool confusingNumber(int n) {
-        // return true if
-        // 1. no invalid digits
-        // 2. new num is different than original num
-
         unordered_set<int> invalid = {2, 3 ,4, 5, 7};
         int originalNum = n, currNum = 0;
         while (n > 0) {
