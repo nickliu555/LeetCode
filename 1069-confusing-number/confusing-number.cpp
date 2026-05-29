@@ -18,7 +18,6 @@ public:
                 currNum = (currNum * 10) + digit;
             }
         }
-
         return currNum != originalNum;
     }
 };
