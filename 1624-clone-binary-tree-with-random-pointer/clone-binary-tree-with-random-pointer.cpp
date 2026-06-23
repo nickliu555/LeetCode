@@ -26,40 +26,33 @@ public:
             bfsQueue.pop();
         
             if (curr->random != nullptr) {
-                NodeCopy* randomCopy;
-                if (NodeToNodeCopy[curr->random] != nullptr) {
-                    randomCopy = NodeToNodeCopy[curr->random];
-                } else {
-                    randomCopy = new NodeCopy(curr->random->val);
-                    NodeToNodeCopy[curr->random] = randomCopy;
-                }
+                NodeCopy* randomCopy = deepCopy(curr->random, NodeToNodeCopy);
                 currCopy->random = randomCopy;
             }
 
             if (curr->left != nullptr) {
-                NodeCopy* leftCopy;
-                if (NodeToNodeCopy[curr->left] != nullptr) {
-                    leftCopy = NodeToNodeCopy[curr->left];
-                } else {
-                    leftCopy = new NodeCopy(curr->left->val);
-                    NodeToNodeCopy[curr->left] = leftCopy;
-                }
+                NodeCopy* leftCopy = deepCopy(curr->left, NodeToNodeCopy);
                 currCopy->left = leftCopy;
                 bfsQueue.push({curr->left, leftCopy});
             }
 
             if (curr->right != nullptr) {
-                NodeCopy* rightCopy;
-                if (NodeToNodeCopy[curr->right] != nullptr) {
-                    rightCopy = NodeToNodeCopy[curr->right];
-                } else {
-                    rightCopy = new NodeCopy(curr->right->val);
-                    NodeToNodeCopy[curr->right] = rightCopy;
-                }
+                NodeCopy* rightCopy = deepCopy(curr->right, NodeToNodeCopy);
                 currCopy->right = rightCopy;
                 bfsQueue.push({curr->right, rightCopy});
             }
         }
         return rootCopy;
+    }
+
+    NodeCopy* deepCopy(Node* node, unordered_map<Node*, NodeCopy*>& NodeToNodeCopy) {
+        NodeCopy* nodeCopy;
+        if (NodeToNodeCopy[node] != nullptr) {
+            nodeCopy = NodeToNodeCopy[node];
+        } else {
+            nodeCopy = new NodeCopy(node->val);
+            NodeToNodeCopy[node] = nodeCopy;
+        }
+        return nodeCopy;
     }
 };
