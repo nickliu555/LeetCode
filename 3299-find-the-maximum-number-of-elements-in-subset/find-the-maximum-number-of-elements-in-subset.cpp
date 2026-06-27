@@ -15,10 +15,8 @@ public:
                 dp[num] = 1;
                 if (count[num] >= 2 && num <= std::sqrt(std::numeric_limits<int>::max())) {
                     int squared = num * num;
-                    if (count[squared] >= 1) {
-                        dp[num] = dp[squared] + 1;
-                        ans = std::max(ans, dp[num]*2-1);
-                    }
+                    dp[num] = dp[squared] + 1;
+                    ans = std::max(ans, dp[num]*2-1);
                 }
             }
         }
