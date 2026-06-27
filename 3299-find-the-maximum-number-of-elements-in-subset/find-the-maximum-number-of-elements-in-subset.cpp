@@ -9,8 +9,7 @@ public:
         int ans = 1;
         for (int num: nums) {
             if (num == 1) {
-                int oneCount = count[1] - (count[1]%2==0);
-                ans = std::max(ans, oneCount);
+                ans = std::max(ans, count[1] - (count[1]%2==0));
             } else {
                 dp[num] = 1;
                 if (count[num] >= 2 && num <= std::sqrt(std::numeric_limits<int>::max())) {
