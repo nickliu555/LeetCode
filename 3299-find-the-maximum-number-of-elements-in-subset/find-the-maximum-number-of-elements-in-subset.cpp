@@ -7,7 +7,7 @@ public:
         unordered_map<int, int> dp;
         int ans = 1;
         for (int num: nums) {
-            if (dp[num] > 0) continue;
+            if (dp.count(num) > 0) continue;
 
             if (num == 1) {
                 ans = std::max(ans, count[1] - (count[1]%2==0));
