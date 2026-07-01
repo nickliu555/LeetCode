@@ -39,7 +39,6 @@ public:
         vector<vector<bool>> vis(n, vector<bool>(n, false));
         priority_queue<pair<int,pair<int,int>>> pq;
         pq.push({grid[0][0], {0,0}});
-
         while(!pq.empty()){
             auto temp = pq.top().second;
             auto safe = pq.top().first;
