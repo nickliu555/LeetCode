@@ -1,7 +1,7 @@
 class Solution {
 public:
     int maxActiveSectionsAfterTrade(string s) {
-        int numActive = 0, maxDelta = 0, prevInactive = 0, currInactive = 0;
+        int numActive = 0, maxInactiveDelta = 0, prevInactive = 0, currInactive = 0;
         for (int i=0; i<s.length(); ++i) {
             if (s[i] == '1') {
                 ++numActive;
@@ -13,10 +13,10 @@ public:
 
                 ++currInactive;
                 if (prevInactive > 0) {
-                    maxDelta = std::max(maxDelta, prevInactive + currInactive);
+                    maxInactiveDelta = std::max(maxInactiveDelta, prevInactive + currInactive);
                 }
             }
         }
-        return numActive + maxDelta;
+        return numActive + maxInactiveDelta;
     }
 };
