@@ -12,8 +12,7 @@ public:
         }
 
         int ans = 0;
-        if (prefixSum > suffixSum) ++ans;
-        for (int i=0, j=n/2; i<n-1; ++i, ++j) {
+        for (int i=0, j=n/2; i<n; ++i, ++j) {
             prefixSum -= nums[i];
             prefixSum += nums[j];
             suffixSum -= nums[j];
