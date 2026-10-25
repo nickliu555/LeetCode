@@ -14,14 +14,16 @@ public:
 
     bool dfs(int r, int c, vector<vector<int>>& grid) {
         int m = grid.size(), n = grid[0].size();
+        // if this grid is water or has already been traversed
         if (grid[r][c] == 1 || grid[r][c] == -1) {
             return true;
         }
+        // if you are on the boundary and it is land
         if (r == 0 || r == m-1 || c == 0 || c == n-1) {
             return false;
         }
 
-        // grid[r][c] = -1 means its land that has been visited already
+        // mark this land as visited
         grid[r][c] = -1;
         bool up = dfs(r-1, c, grid);
         bool down = dfs(r+1, c, grid);
