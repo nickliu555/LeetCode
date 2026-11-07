@@ -11,13 +11,14 @@ public:
         vector<int> ans(m);
         long time = 0;
         for (int i=0; i<m; ++i) {
-            time = std::max(static_cast<long>(i), time);
+            time = std::max((long)i, time);
+            // do a time skip if no immediate available server
             if (availableServers.empty() && busyServers.top().first > time) {
                 time = busyServers.top().first;
             }
 
             while (!busyServers.empty() && busyServers.top().first <= time) {
-                int index = static_cast<int>(busyServers.top().second);
+                int index = (int)busyServers.top().second;
                 availableServers.push({servers[index], index});
                 busyServers.pop();
             }
