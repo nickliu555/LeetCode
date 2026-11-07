@@ -2,10 +2,12 @@ class Solution {
 public:
     vector<int> assignTasks(vector<int>& servers, vector<int>& tasks) {
         int n = servers.size(), m = tasks.size();
+        // {server weight, index}
         priority_queue<pair<int,int>, vector<pair<int,int>>, greater<>> availableServers;
         for (int i=0; i<n; ++i) {
             availableServers.push({servers[i], i});
         }
+        // {server free time, index}
         priority_queue<pair<long,long>, vector<pair<long,long>>, greater<>> busyServers;
         
         vector<int> ans(m);
