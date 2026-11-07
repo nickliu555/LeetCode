@@ -23,9 +23,8 @@ public:
                 busyServers.pop();
             }
             
-            pair<int,int> info = availableServers.top();
-            busyServers.push({time + tasks[i], info.second});
-            ans[i] = info.second;
+            busyServers.push({time + tasks[i], availableServers.top().second});
+            ans[i] = availableServers.top().second;
             availableServers.pop();
         }
         return ans;
