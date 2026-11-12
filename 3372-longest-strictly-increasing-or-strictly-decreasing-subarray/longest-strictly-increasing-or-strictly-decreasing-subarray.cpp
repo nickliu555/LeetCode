@@ -6,16 +6,13 @@ public:
             if (nums[i] > nums[i-1]) {
                 ++currIncr;
                 ans = std::max(ans, currIncr);
-            } else {
-                currIncr = 1;
-            }
-        }
-
-        for (int i=1; i<nums.size(); ++i) {
-            if (nums[i] < nums[i-1]) {
+                currDecr = 1;
+            } else if (nums[i] < nums[i-1]) {
                 ++currDecr;
                 ans = std::max(ans, currDecr);
+                currIncr = 1;
             } else {
+                currIncr = 1;
                 currDecr = 1;
             }
         }
