@@ -14,7 +14,7 @@ public:
         unordered_map<int,int> count;
         for (int i=n-1; i>=0; --i) {
             // target from i...n-1 is NOT non-decreasing, so never will be a match anymore
-            if ((i < n-1 && target[i] < target[i+1])) {
+            if (i < n-1 && target[i] < target[i+1]) {
                 return ans;
             }
 
