@@ -1,10 +1,10 @@
 class Solution {
 public:
     int countSuffix(vector<int>& nums, vector<int>& target) {
-        int n = nums.size(), leftSideAllEqualIndex = -1;
+        int n = nums.size(), leftSideAllMatchIndex = -1;
         for (int i=0; i<n; ++i) {
             if (nums[i] == target[i]) {
-                leftSideAllEqualIndex = i;
+                leftSideAllMatchIndex = i;
             } else {
                 break;
             }
@@ -13,7 +13,7 @@ public:
         int numDiff = 0, ans = 0;
         unordered_map<int,int> count;
         for (int i=n-1; i>=0; --i) {
-            // target from i...n-1 is NOT non-decreasing, so never will be a match anymore
+            // if target from i...n-1 is NOT non-decreasing, so never will be a match anymore
             if (i < n-1 && target[i] < target[i+1]) {
                 return ans;
             }
@@ -32,8 +32,8 @@ public:
                 --numDiff;
             }
 
-            // if 0...i-1 for nums and target do not match
-            if (i > leftSideAllEqualIndex+1) {
+            // if nums and target from 0...i-1 do not match
+            if (i > leftSideAllMatchIndex+1) {
                 continue;
             }
             if (numDiff == 0) {
