@@ -20,13 +20,14 @@ public:
             return false;
         }
 
-        bool isCurr = curr->val == p->val || curr->val == q->val;
-        bool isLeft = dfs(curr->left, p, q, ans);
-        bool isRight = dfs(curr->right, p, q, ans);
+        int numMatches = 0;
+        numMatches += curr->val == p->val || curr->val == q->val;
+        numMatches += dfs(curr->left, p, q, ans);
+        numMatches += dfs(curr->right, p, q, ans);
 
-        if ((isCurr && (isLeft || isRight)) || (isLeft && isRight)) {
+        if (numMatches == 2) {
             ans = curr;
         }
-        return isCurr || isLeft || isRight;
+        return numMatches > 0;
     }
 };
