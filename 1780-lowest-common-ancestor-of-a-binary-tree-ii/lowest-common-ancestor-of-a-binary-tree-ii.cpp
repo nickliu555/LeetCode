@@ -16,7 +16,7 @@ public:
     }
 
     bool dfs(TreeNode* curr, TreeNode* p, TreeNode* q, TreeNode*& ans) {
-        if (curr == nullptr) {
+        if (curr == nullptr || ans != nullptr) {
             return false;
         }
 
